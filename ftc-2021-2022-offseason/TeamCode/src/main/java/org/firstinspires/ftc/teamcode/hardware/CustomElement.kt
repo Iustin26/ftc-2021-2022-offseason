@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.hardware.*
 
 
 class CustomElement(hwMap: HardwareMap) {
-    private val servo1 = hwMap.servo["intakeServo1"] ?: throw Exception("Failed to find servo outtakeServo1")
-    private val servo2 = hwMap.servo["intakeServo2"] ?: throw Exception("Failed to find servo outtakeServo2")
+    val servo1 = hwMap.servo["customServo1"] ?: throw Exception("Failed to find servo customElementServo1")
+    val servo2 = hwMap.servo["customServo2"] ?: throw Exception("Failed to find servo customElementServo2")
     companion object {
         const val servo1Open = 0.60
         const val servo1Close = 0.80
@@ -46,4 +46,9 @@ class CustomElement(hwMap: HardwareMap) {
     private fun setServoPositions2(pos: Double) {
         servo2.position = pos
     }
+
+    fun stop() {
+        closeServos()
+    }
+
 }
